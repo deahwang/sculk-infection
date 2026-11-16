@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCULK INFECTION</title>
+<style>
+body {
+  background: #071515;
+  color: #d8ffff;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 0;
+}
+header {
+  padding: 65px 15px;
+  background: linear-gradient(135deg,#071515,#103c3b,#071515);
+  border-bottom: 2px solid #00e5c3;
+}
+h1 {
+  color: #00ffcf;
+  font-size: 36px;
+  text-shadow: 0 0 15px #00e5c3;
+}
+section {
+  margin: 25px auto;
+  padding: 22px;
+  max-width: 600px;
+  background: #102626;
+  border: 1px solid #17615c;
+  border-radius: 12px;
+}
+button {
+  background: #00bda5;
+  color: #001b19;
+  border: 0;
+  padding: 15px 30px;
+  font-weight: bold;
+  font-size: 17px;
+  border-radius: 8px;
+}
+button:disabled {
+  background: #45615e;
+  color: #c0d0ce;
+}
+li {
+  margin: 12px;
+  text-align: left;
+}
+footer {
+  padding: 25px;
+  color: #719b96;
+}
+</style>
+</head>
+<body>
+
+<header>
+<h1>SCULK INFECTION</h1>
+<p>THE ANCIENT SCULK HAS AWAKENED.</p>
+<p>마인크래프트 베드락 확장팩</p>
+</header>
+
+<section>
+<h2>DOWNLOAD</h2>
+<p>지원 버전: Bedrock 26.70</p>
+<button id="download" disabled>
+애드온 제작 중
+</button>
+<p id="status">첫 번째 버전 준비 중...</p>
+</section>
+
+<section>
+<h2>FEATURES</h2>
+<ul>
+<li>고대의 워든 보스전</li>
+<li>감염된 몬스터 5종</li>
+<li>스컬크 장비 및 광석</li>
+<li>스컬크의 토템</li>
+<li>워든 소환 제단</li>
+<li>워든의 팔</li>
+<li>신규 전투 패턴과 애니메이션</li>
+</ul>
+</section>
+
+<section>
+<h2>UPDATE LOG</h2>
+<p>VERSION 0.1.0</p>
+<p>프로젝트 개발 시작</p>
+</section>
+
+<footer>
+SCULK INFECTION © 2026
+</footer>
+
+<script>
+fetch('./SCULK_INFECTION.mcaddon', {method:'HEAD'})
+.then(r => {
+ if(r.ok) {
+  const b=document.getElementById('download');
+  b.disabled=false;
+  b.textContent='DOWNLOAD ADDON';
+  b.onclick=()=>location.href='./SCULK_INFECTION.mcaddon';
+  document.getElementById('status').textContent='다운로드 가능!';
+ }
+})
+.catch(()=>{});
+</script>
+
+</body>
+</html>
