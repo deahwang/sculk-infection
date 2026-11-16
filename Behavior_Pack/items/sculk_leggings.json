@@ -1,0 +1,26 @@
+{
+  "format_version": "1.20.80",
+  "minecraft:item": {
+    "description": {
+      "identifier": "sculk:sculk_leggings",
+      "menu_category": {
+        "category": "equipment",
+        "group": "itemGroup.name.leggings"
+      }
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "스컬크 레깅스"
+      },
+      "minecraft:icon": "echo_shard",
+      "minecraft:max_stack_size": 1,
+      "minecraft:wearable": {
+        "protection": 7,
+        "slot": "slot.armor.legs"
+      },
+      "minecraft:durability": {
+        "max_durability": 750
+      }
+    }
+  }
+}
