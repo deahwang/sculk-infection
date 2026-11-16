@@ -1,0 +1,26 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "sculk:sculk_core_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {"item": "sculk:sculk_fragment"},
+      {"item": "sculk:sculk_fragment"},
+      {"item": "sculk:sculk_fragment"},
+      {"item": "sculk:sculk_fragment"},
+      {"item": "sculk:sculk_fragment"},
+      {"item": "sculk:sculk_fragment"},
+      {"item": "sculk:sculk_fragment"},
+      {"item": "sculk:sculk_fragment"},
+      {"item": "sculk:sculk_fragment"}
+    ],
+    "result": {
+      "item": "sculk:sculk_core",
+      "count": 1
+    }
+  }
+}
