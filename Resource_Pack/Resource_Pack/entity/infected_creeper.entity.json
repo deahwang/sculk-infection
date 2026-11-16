@@ -1,0 +1,20 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sculk:infected_creeper",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/creeper/creeper"
+      },
+      "geometry": {
+        "default": "geometry.creeper"
+      },
+      "render_controllers": [
+        "controller.render.creeper"
+      ]
+    }
+  }
+}
