@@ -1,0 +1,20 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sculk:infected_spider",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/spider/spider"
+      },
+      "geometry": {
+        "default": "geometry.spider"
+      },
+      "render_controllers": [
+        "controller.render.spider"
+      ]
+    }
+  }
+}
