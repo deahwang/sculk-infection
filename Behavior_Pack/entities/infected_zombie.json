@@ -7,7 +7,9 @@
       "is_summonable": true,
       "is_experimental": false
     },
-    "components": {
+    "components": {"minecraft:loot": {
+  "table": "loot_tables/entities/infected_zombie.json"
+    }
       "minecraft:type_family": {
         "family": ["infected", "monster", "undead", "mob"]
       },
