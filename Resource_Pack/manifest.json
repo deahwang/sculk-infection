@@ -1,0 +1,17 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "SCULK INFECTION RP",
+    "description": "Ancient Sculk Textures and Animations",
+    "uuid": "4a3d5c61-9e72-4b80-a135-6f2d8c7e914b",
+    "version": [0, 1, 0],
+    "min_engine_version": [1, 21, 0]
+  },
+  "modules": [
+    {
+      "type": "resources",
+      "uuid": "7b5e6d82-3f94-4c16-b827-9a1e5d3f604c",
+      "version": [0, 1, 0]
+    }
+  ]
+}
