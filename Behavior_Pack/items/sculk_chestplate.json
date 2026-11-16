@@ -1,0 +1,26 @@
+{
+  "format_version": "1.20.80",
+  "minecraft:item": {
+    "description": {
+      "identifier": "sculk:sculk_chestplate",
+      "menu_category": {
+        "category": "equipment",
+        "group": "itemGroup.name.chestplate"
+      }
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "스컬크 흉갑"
+      },
+      "minecraft:icon": "echo_shard",
+      "minecraft:max_stack_size": 1,
+      "minecraft:wearable": {
+        "protection": 8,
+        "slot": "slot.armor.chest"
+      },
+      "minecraft:durability": {
+        "max_durability": 800
+      }
+    }
+  }
+}
