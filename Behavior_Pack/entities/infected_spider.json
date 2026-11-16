@@ -6,7 +6,9 @@
       "is_spawnable": true,
       "is_summonable": true
     },
-    "components": {
+    "components": {"minecraft:loot": {
+  "table": "loot_tables/entities/infected_spider.json"
+},
       "minecraft:type_family": {
         "family": ["infected", "monster", "spider", "mob"]
       },
