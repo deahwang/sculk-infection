@@ -1,0 +1,23 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "SCULK INFECTION BP",
+    "description": "Ancient Sculk Expansion",
+    "uuid": "1c8f3a21-7b42-4d91-9e63-2a5f8c0b714e",
+    "version": [0, 1, 0],
+    "min_engine_version": [1, 21, 0]
+  },
+  "modules": [
+    {
+      "type": "data",
+      "uuid": "2d9e4b32-8c53-4ea2-af74-3b6a9d1c825f",
+      "version": [0, 1, 0]
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "4a3d5c61-9e72-4b80-a135-6f2d8c7e914b",
+      "version": [0, 1, 0]
+    }
+  ]
+}
