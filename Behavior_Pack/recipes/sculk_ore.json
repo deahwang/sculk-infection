@@ -1,0 +1,21 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "sculk:sculk_ore_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {
+        "item": "sculk:sculk_fragment",
+        "count": 3
+      }
+    ],
+    "result": {
+      "item": "sculk:sculk_ore",
+      "count": 1
+    }
+  }
+}
