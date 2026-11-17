@@ -162,3 +162,69 @@ world.afterEvents.entityHurt.subscribe((event) => {
         );
     }
 });
+const infectionStartedAt = new Map();
+
+system.runInterval(() => {
+    for (const player of world.getPlayers()) {
+
+        if (!player.hasTag("sculk_infected")) {
+            infectionStartedAt.delete(player.id);
+            continue;
+        }
+
+        const now = Date.now();
+
+        if (!infectionStartedAt.has(player.id)) {
+            infectionStartedAt.set(player.id, now);
+        }
+
+        const elapsed = (now - infectionStartedAt.get(player.id)) / 1000;
+
+        let stage = 0;
+
+        if (elapsed >= 180) {
+            stage = 3;
+        } else if (elapsed >= 90) {
+            stage = 2;
+        } else if (elapsed >= 30) {
+            stage = 1;
+        }
+
+        if (stage === 0) continue;
+
+        const stageTag = `sculk_infection_stage_${stage}`;
+
+        for (let i = 1; i <= 3; i++) {
+            const tag = `sculk_infection_stage_${i}`;
+
+            if (i !== stage && player.hasTag(tag)) {
+                player.removeTag(tag);
+            }
+        }
+
+        if (!player.hasTag(stageTag)) {
+            player.addTag(stageTag);
+            player.sendMessage(`§5[스컬크 감염] ${stage}단계에 도달했습니다!`);
+        }
+
+        player.addEffect("weakness", 40, {
+            amplifier: 0,
+            showParticles: false
+        });
+
+        if (stage >= 2) {
+            player.addEffect("slowness", 40, {
+                amplifier: 0,
+                showParticles: false
+            });
+        }
+
+        if (stage >= 3) {
+            player.addEffect("mining_fatigue", 40, {
+                amplifier: 0,
+                showParticles: false
+            });
+        }
+
+    }
+}, 20);
