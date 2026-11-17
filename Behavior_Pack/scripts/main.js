@@ -93,3 +93,55 @@ system.runInterval(() => {
         }
     }
 }, 20);
+// 감염된 몹 설정
+const INFECTED_MOB_IDS = [const INFECTED_MOB_IDS = [
+    "sculk:infected_zombie",
+    "sculk:infected_skeleton",
+    "sculk:infected_spider",
+    "sculk:infected_enderman",
+    "sculk:infected_creeper"
+];
+
+
+// 기본 감염 확률 30%
+const BASE_INFECTION_CHANCE = 0.30;
+
+// 몹에게 공격받았을 때 감염 판정
+world.afterEvents.entityHurt.subscribe((event) => {
+
+    const player = event.hurtEntity;
+    const attacker = event.damageSource.damagingEntity;
+
+    if (player.typeId !== "minecraft:player") return;
+    if (!attacker) return;
+
+    // 감염된 몹인지 확인
+    if (!INFECTED_MOB_IDS.includes(attacker.typeId)) return;
+
+    // 이미 감염된 플레이어는 제외
+    if (player.hasTag("sculk_infected")) return;
+
+    // 방어구 감염 저항 계산
+    const equipment = player.getComponent("minecraft:equippable");
+
+    let resistance = 0;
+
+    if (equipment) {
+        for (const armor of ARMOR) {
+            const item = equipment.getEquipment(armor.slot);
+
+            if (item?.typeId === armor.id) {
+                resistance += 5;
+            }
+        }
+    }
+
+    // 최종 감염 확률
+    const chance = BASE_INFECTION_CHANCE * (1 - resistance / 100);
+
+    if (Math.random() < chance) {
+        player.addTag("sculk_infected");
+
+        player.sendMessage("§5[감염] 스컬크 감염이 시작되었습니다.");
+    }
+});
