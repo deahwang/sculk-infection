@@ -94,7 +94,7 @@ system.runInterval(() => {
     }
 }, 20);
 // 감염된 몹 설정
-const INFECTED_MOB_IDS = [const INFECTED_MOB_IDS = [
+const INFECTED_MOB_IDS = [
     "sculk:infected_zombie",
     "sculk:infected_skeleton",
     "sculk:infected_spider",
