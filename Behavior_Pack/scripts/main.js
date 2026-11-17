@@ -93,7 +93,6 @@ system.runInterval(() => {
         }
     }
 }, 20);
-// 감염된 몹 설정
 const INFECTED_MOB_IDS = [
     "sculk:infected_zombie",
     "sculk:infected_skeleton",
@@ -102,26 +101,42 @@ const INFECTED_MOB_IDS = [
     "sculk:infected_creeper"
 ];
 
-
-// 기본 감염 확률 30%
-const BASE_INFECTION_CHANCE = 0.30;
-
-// 몹에게 공격받았을 때 감염 판정
+// 감염 판정
 world.afterEvents.entityHurt.subscribe((event) => {
 
     const player = event.hurtEntity;
-    const attacker = event.damageSource.damagingEntity;
 
     if (player.typeId !== "minecraft:player") return;
-    if (!attacker) return;
-
-    // 감염된 몹인지 확인
-    if (!INFECTED_MOB_IDS.includes(attacker.typeId)) return;
-
-    // 이미 감염된 플레이어는 제외
     if (player.hasTag("sculk_infected")) return;
 
-    // 방어구 감염 저항 계산
+    const damageSource = event.damageSource;
+
+    const attackers = [];
+
+    if (damageSource.damagingEntity) {
+        attackers.push(damageSource.damagingEntity);
+    }
+
+    // 화살 등 투사체의 주인 확인
+    if (damageSource.damagingProjectile) {
+        try {
+            const projectile = damageSource.damagingProjectile;
+            const owner = projectile.getComponent("minecraft:projectile")?.owner;
+
+            if (owner) attackers.push(owner);
+        } catch (e) {
+            // 투사체 정보가 없으면 건너뜀
+        }
+    }
+
+    // 감염 몹인지 확인
+    const infectedAttacker = attackers.some(entity =>
+        INFECTED_MOB_IDS.includes(entity.typeId)
+    );
+
+    if (!infectedAttacker) return;
+
+    // 방어구 저항 계산
     const equipment = player.getComponent("minecraft:equippable");
 
     let resistance = 0;
@@ -136,12 +151,14 @@ world.afterEvents.entityHurt.subscribe((event) => {
         }
     }
 
-    // 최종 감염 확률
-    const chance = BASE_INFECTION_CHANCE * (1 - resistance / 100);
+    // 기본 감염 확률 30%
+    const infectionChance = 0.30 * (1 - resistance / 100);
 
-    if (Math.random() < chance) {
+    if (Math.random() < infectionChance) {
         player.addTag("sculk_infected");
 
-        player.sendMessage("§5[감염] 스컬크 감염이 시작되었습니다.");
+        player.sendMessage(
+            "§5[스컬크 감염] 감염되었습니다!"
+        );
     }
 });
