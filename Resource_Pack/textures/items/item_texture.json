@@ -1,0 +1,9 @@
+"sculk_core": {
+  "textures": "textures/items/1794912428508"
+},
+"sculk_ore": {
+  "textures": "textures/items/1794912425983"
+},
+"sculk_fragment": {
+  "textures": "textures/items/1794912121665"
+}
