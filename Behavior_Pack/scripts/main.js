@@ -228,3 +228,34 @@ system.runInterval(() => {
 
     }
 }, 20);
+// 스컬크 치료제
+world.afterEvents.itemUse.subscribe((event) => {
+
+    const player = event.source;
+    const item = event.itemStack;
+
+    if (item.typeId !== "sculk:sculk_cure") return;
+
+    if (!player.hasTag("sculk_infected")) {
+        player.sendMessage("§7감염되지 않았습니다.");
+        return;
+    }
+
+    // 감염 상태 제거
+    player.removeTag("sculk_infected");
+
+    // 감염 단계 제거
+    for (let i = 1; i <= 3; i++) {
+        player.removeTag(`sculk_infection_stage_${i}`);
+    }
+
+    // 감염 시간 초기화
+    infectionStartedAt.delete(player.id);
+
+    // 감염 증상 제거
+    player.removeEffect("weakness");
+    player.removeEffect("slowness");
+    player.removeEffect("mining_fatigue");
+
+    player.sendMessage("§a[스컬크] 감염이 치료되었습니다!");
+});
